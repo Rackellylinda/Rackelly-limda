@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penalty Kick Game</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Improved Design -->
+</head>
+<body>
+    <header>
+        <h1>Penalty Kick Game</h1>
+        <nav>
+            <ul>
+                <li><a href="#trivia">Trivia Questions</a></li>
+                <li><a href="#start-game">Start Game</a></li>
+                <li><a href="#leaderboard">Leaderboard</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="trivia">
+        <h2>Trivia Questions</h2>
+        <!-- Expanded trivia questions implementation -->
+        <div id="questions"></div>
+    </section>
+    
+    <section id="start-game">
+        <h2>Start the Game</h2>
+        <label for="difficulty">Select Difficulty:</label>
+        <select id="difficulty">
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+        </select>
+        <button onclick="startGame()">Start Game</button>
+    </section>
+    
+    <section id="game">
+        <h2>Game Area</h2>
+        <!-- Game implementation with sound -->
+        <div id="game-canvas"></div>
+    </section>
+    
+    <section id="leaderboard">
+        <h2>Leaderboard</h2>
+        <div id="leaderboard-display"></div>
+    </section>
+    
+    <footer>
+        <p>Documentation: <a href="#documentation">View Here</a></p>
+    </footer>
+
+    <script src="game.js"></script> <!-- Refactored Code Structure -->
+    <script src="sound.js"></script> <!-- Sound Features -->
+</body>
+</html>
