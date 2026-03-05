@@ -1,56 +1,93 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Penalty Kick Game</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Improved Design -->
+    <title>Trivia de Penalti - Copa do Mundo</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
     <header>
-        <h1>Penalty Kick Game</h1>
-        <nav>
-            <ul>
-                <li><a href="#trivia">Trivia Questions</a></li>
-                <li><a href="#start-game">Start Game</a></li>
-                <li><a href="#leaderboard">Leaderboard</a></li>
-            </ul>
-        </nav>
+        <h1>Trivia de Penalti da Copa do Mundo</h1>
     </header>
-    
-    <section id="trivia">
-        <h2>Trivia Questions</h2>
-        <!-- Expanded trivia questions implementation -->
-        <div id="questions"></div>
-    </section>
-    
-    <section id="start-game">
-        <h2>Start the Game</h2>
-        <label for="difficulty">Select Difficulty:</label>
-        <select id="difficulty">
-            <option value="easy">Easy</option>
-            <option value="medium">Medium</option>
-            <option value="hard">Hard</option>
-        </select>
-        <button onclick="startGame()">Start Game</button>
-    </section>
-    
-    <section id="game">
-        <h2>Game Area</h2>
-        <!-- Game implementation with sound -->
-        <div id="game-canvas"></div>
-    </section>
-    
-    <section id="leaderboard">
-        <h2>Leaderboard</h2>
-        <div id="leaderboard-display"></div>
-    </section>
-    
+    <main>
+        <section id="trivia">
+            <div id="question"></div>
+            <div id="answers"></div>
+            <button id="nextButton">Próxima Pergunta</button>
+        </section>
+        <section id="options">
+            <label for="difficulty">Escolha o Nível de Dificuldade:</label>
+            <select id="difficulty">
+                <option value="easy">Fácil</option>
+                <option value="medium">Médio</option>
+                <option value="hard">Difícil</option>
+            </select>
+        </section>
+    </main>
     <footer>
-        <p>Documentation: <a href="#documentation">View Here</a></p>
+        <div id="leaderboard"></div>
     </footer>
-
-    <script src="game.js"></script> <!-- Refactored Code Structure -->
-    <script src="sound.js"></script> <!-- Sound Features -->
+    <audio id="soundEffect" src="sound.mp3"></audio>
 </body>
 </html>
+
+
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+header, main, footer {
+    text-align: center;
+    padding: 20px;
+}
+#trivia {
+    margin-bottom: 20px;
+}
+@media (max-width: 600px) {
+    h1 { font-size: 24px; }
+}
+
+
+// script.js
+const questions = [
+    { question: "Quantas Copas do Mundo foram realizadas até 2022?", answers: ["20", "21", "22"], correct: 0 },
+    { question: "Quem venceu a Copa do Mundo de 1998?", answers: ["Brasil", "França", "Alemanha"], correct: 1 }
+];
+
+let currentQuestionIndex = 0;
+let score = 0;
+
+function displayQuestion() {
+    const questionElement = document.getElementById('question');
+    const answersElement = document.getElementById('answers');
+    
+    questionElement.innerText = questions[currentQuestionIndex].question;
+    answersElement.innerHTML = questions[currentQuestionIndex].answers.map((answer, index) => `
+        <button onclick="selectAnswer(${index})">${answer}</button>
+    `).join('');
+}
+
+function selectAnswer(selectedIndex) {
+    if (selectedIndex === questions[currentQuestionIndex].correct) {
+        score++;
+        document.getElementById('soundEffect').play();
+    }
+    currentQuestionIndex++;
+    if (currentQuestionIndex < questions.length) {
+        displayQuestion();
+    } else {
+        showLeaderboard();
+    }
+}
+
+function showLeaderboard() {
+    const leaderboard = document.getElementById('leaderboard');
+    leaderboard.innerText = `Seu Score: ${score}`;
+}
+displayQuestion();
