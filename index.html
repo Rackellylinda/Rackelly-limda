@@ -3,30 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather Dashboard</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Penalty Kick Game</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; color: #333; text-align: center; }
+        h1 { color: #008CBA; }
+        .trivia { margin: 20px; padding: 20px; background-color: #fff; border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        button { padding: 10px 20px; background-color: #008CBA; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background-color: #005f7f; }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Weather Dashboard</h1>
-    </header>
-    <main>
-        <section id="weather">
-            <h2>Current Weather</h2>
-            <div id="weather-data">
-                <!-- Weather data will be populated here -->
-            </div>
-        </section>
-        <section id="forecast">
-            <h2>Forecast</h2>
-            <div id="forecast-data">
-                <!-- Forecast data will be populated here -->
-            </div>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2026 Weather Dashboard. All rights reserved.</p>
-    </footer>
-    <script src="script.js"></script>
+    <h1>Penalty Kick Game</h1>
+    <div class="trivia">
+        <h2>Trivia Questions</h2>
+        <p><strong>Question 1:</strong> What is a penalty kick? <br> <em>Answer: A penalty kick is awarded for a foul inside the penalty area.</em></p>
+        <p><strong>Question 2:</strong> How far is the penalty spot from the goal? <br> <em>Answer: The penalty spot is 12 yards (11 meters) from the goal line.</em></p>
+        <p><strong>Question 3:</strong> Who was the first player to score a penalty kick in football history? <br> <em>Answer: The first recorded penalty kick was taken by a player named Donald Mackinlay in 1891.</em></p>
+    </div>
+    <button onclick="startGame()">Start Game</button>
+    <script>
+        function startGame() {
+            alert('Game started!');
+            // Game logic goes here
+        }
+    </script>
 </body>
 </html>
